@@ -31,7 +31,6 @@ public class InitialPosition extends CommandBase {
     Robot.timer.start();
 
     driveTrain.gyro.reset();
-    driveTrain.gyro.calibrate();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
