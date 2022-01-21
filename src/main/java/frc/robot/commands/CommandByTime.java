@@ -16,7 +16,7 @@ public class CommandByTime extends CommandBase {
   public CommandByTime(DriveTrain dt) {
     // Use addRequirements() here to declare subsystem dependencies.
     driveTrain = dt;
-    addRequirements(driveTrain);
+    addRequirements(dt);
   }
 
   // Called when the command is initially scheduled.

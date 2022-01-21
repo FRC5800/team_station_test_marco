@@ -7,11 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.CommandByTime;
 import frc.robot.commands.InitialPosition;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.driveWithJoysticks;
 
 /**
@@ -26,13 +24,16 @@ public class RobotContainer {
   //declarando DriveTrain:
   private final DriveTrain driveTrain;
   private final driveWithJoysticks driveWithJoysticks;
+  private final InitialPosition initialPosition;
   public static Joystick stick;
+
   
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     driveTrain = new DriveTrain();
     driveWithJoysticks = new driveWithJoysticks(driveTrain);
+    initialPosition = new InitialPosition(driveTrain);
     driveTrain.setDefaultCommand(driveWithJoysticks);    
 
     stick = new Joystick(Constants.joytickID);
@@ -57,10 +58,8 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new SequentialCommandGroup( 
-      new InitialPosition(driveTrain),
-      new CommandByTime(driveTrain)
-    );
+    return initialPosition;
+  
   }
   
 }

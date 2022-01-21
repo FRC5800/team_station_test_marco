@@ -20,7 +20,7 @@ public class InitialPosition extends CommandBase {
   public InitialPosition(DriveTrain dt) {
     // Use addRequirements() here to declare subsystem dependencies.
     driveTrain = dt;
-    addRequirements(driveTrain);
+    addRequirements(dt);
     location = DriverStation.getInstance().getLocation();
   }
 
