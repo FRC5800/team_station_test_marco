@@ -43,10 +43,10 @@ public class DriveTrain extends SubsystemBase {
     
 
     //definindo speedcontrollers
-    leftMotors = new SpeedControllerGroup(leftMaster, leftSlave);
-    rightMotors = new SpeedControllerGroup(rightMaster, rightSlave);
+    leftSlave.follow(leftMaster);
+    rightSlave.follow(rightMaster);
     //definindo differential drive
-    m_drive = new DifferentialDrive(leftMotors, rightMotors);
+    m_drive = new DifferentialDrive(leftMaster, rightMaster);
   }
  @Override
   public void periodic() {
