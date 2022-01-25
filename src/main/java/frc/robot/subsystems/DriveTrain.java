@@ -8,18 +8,18 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.simulation.ADXRS450_GyroSim;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
   /** Creates a new DriveTrain. */
+
   //gyro
   public ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-  //declarando speedcontrollers
-  SpeedControllerGroup leftMotors;
-  SpeedControllerGroup rightMotors;
+  //simulação do gyro
+  public ADXRS450_GyroSim gyroSim = new ADXRS450_GyroSim(gyro);
   //declarando motores left
   public WPI_TalonSRX leftMaster = new WPI_TalonSRX(Constants.leftMasterID);
   public WPI_TalonSRX leftSlave = new WPI_TalonSRX(Constants.leftSlaveID);
