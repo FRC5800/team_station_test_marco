@@ -40,11 +40,14 @@ public class driveWithJoysticks extends CommandBase {
   public void execute() {
     setInvertButton(RobotContainer.stick.getRawButtonPressed(Constants.invertButtonID));
     if (setInvertButton(true)) {
-     driveTrain.inverterdArcadeJoysticks(RobotContainer.stick, Constants.robot_speed);
+      driveTrain.rightMaster.setInverted(false);
+      driveTrain.leftMaster.setInverted(true);
 
     }else{ 
-      driveTrain.arcadeJoysticks(RobotContainer.stick, Constants.robot_speed);
+      driveTrain.rightMaster.setInverted(true);
+      driveTrain.leftMaster.setInverted(false);
     }
+    driveTrain.arcadeJoysticks(RobotContainer.stick, Constants.robot_speed);
   }
 
   // Called once the command ends or is interrupted.
