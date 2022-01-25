@@ -58,10 +58,5 @@ public class driveWithJoysticks extends CommandBase {
   @Override
   public boolean isFinished() {
     return false;
-
-  
-
-
-
   }
 }

@@ -44,7 +44,7 @@ public class InitialPosition extends CommandBase {
         driveTrain.arcadeAutonomousMove(0.0, 1.0, Constants.robot_speed);
       }else if (positionAxis > 45 && positionAxis < 48){
         //se estiver entre 45 e 48, mover pra frente
-        driveTrain.arcadeAutonomousMove(1, 0, Constants.robot_speed);
+        driveTrain.arcadeAutonomousMove(1.0, 0, Constants.robot_speed);
       }else if (positionAxis > 48){
         //se angulo for acima de 48, mover pra esquerda
         driveTrain.arcadeAutonomousMove(0.0, -1.0, Constants.robot_speed);

@@ -8,6 +8,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.simulation.ADXRS450_GyroSim;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -29,6 +31,9 @@ public class DriveTrain extends SubsystemBase {
   public WPI_TalonSRX rightSlave = new WPI_TalonSRX(Constants.rightSlaveID);
   //diferential Drive
   DifferentialDrive m_drive;
+  //speedcontrollers
+  SpeedController leftMotor;
+  SpeedController rightMotor;
   
 
   public DriveTrain() {
@@ -43,19 +48,15 @@ public class DriveTrain extends SubsystemBase {
     
 
     //definindo speedcontrollers
-    leftSlave.follow(leftMaster);
-    rightSlave.follow(rightMaster);
+    leftMotor = new SpeedControllerGroup(leftMaster, leftSlave);
+    rightMotor = new SpeedControllerGroup(rightMaster, rightSlave);
     //definindo differential drive
-    m_drive = new DifferentialDrive(leftMaster, rightMaster);
+    m_drive = new DifferentialDrive(leftMotor, rightMotor);
   }
  @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
-  public void inverterdArcadeJoysticks(Joystick stick, double speed){
-
-    m_drive.arcadeDrive(-stick.getRawAxis(Constants.yID)*speed, -stick.getRawAxis(Constants.xID)*speed);
-    }
 
   public void arcadeJoysticks(Joystick stick, double speed){
 
