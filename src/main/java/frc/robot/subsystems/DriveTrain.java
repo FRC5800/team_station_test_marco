@@ -52,7 +52,12 @@ public class DriveTrain extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-  public void driveWithJoysticks(Joystick stick, double speed){
+  public void inverterdArcadeJoysticks(Joystick stick, double speed){
+
+    m_drive.arcadeDrive(-stick.getRawAxis(Constants.yID)*speed, -stick.getRawAxis(Constants.xID)*speed);
+    }
+
+  public void arcadeJoysticks(Joystick stick, double speed){
 
   m_drive.arcadeDrive(stick.getRawAxis(Constants.yID)*speed, stick.getRawAxis(Constants.xID)*speed);
   }

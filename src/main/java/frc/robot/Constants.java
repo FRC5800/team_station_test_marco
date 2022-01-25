@@ -31,6 +31,8 @@ public final class Constants {
     public static double timeForward = 3.0;
     //porta do joystick
     public static int joytickID = 0;
+    //ID do botão de inverção
+    public static int invertButtonID = 5;
     //gyro ID
     public static int gyroID = 0;
 

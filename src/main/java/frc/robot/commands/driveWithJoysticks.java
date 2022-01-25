@@ -38,16 +38,13 @@ public class driveWithJoysticks extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    setInvertButton(RobotContainer.stick.getRawButtonPressed(5));
+    setInvertButton(RobotContainer.stick.getRawButtonPressed(Constants.invertButtonID));
     if (setInvertButton(true)) {
-      driveTrain.rightMaster.setInverted(false);
-      driveTrain.leftMaster.setInverted(true);
-    }else{
-      driveTrain.rightMaster.setInverted(true);
-      driveTrain.leftMaster.setInverted(false);
+     driveTrain.inverterdArcadeJoysticks(RobotContainer.stick, Constants.robot_speed);
+
+    }else{ 
+      driveTrain.arcadeJoysticks(RobotContainer.stick, Constants.robot_speed);
     }
-    
-    driveTrain.driveWithJoysticks(RobotContainer.stick, Constants.robot_speed);
   }
 
   // Called once the command ends or is interrupted.
